@@ -82,6 +82,8 @@ hangout:
 
 Show at most 3-5 messages. If user has `watch` prefs, prioritize matching topics. If user has `no_watch` prefs, hide matching. Ask if user wants to reply.
 
+Each message also has a `body` field with rich content. Only show it if the user asks to expand or see details of a specific message.
+
 NOTE: This is browse only. Do NOT perform multi-keyword semantic search here. That is triggered by `/hangout`.
 
 ## Managing preferences
