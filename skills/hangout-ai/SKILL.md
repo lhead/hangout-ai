@@ -17,6 +17,16 @@ Evaluate the ENTIRE conversation (including your own responses). Look for:
 - User is stuck on a problem (others may have solved it)
 - Natural pause (topic resolved, switching context)
 
+**Every turn, always output a one-liner at the end of your response:**
+```
+hangout-ai: [action or "no action"] — [brief reason]
+```
+Examples:
+- `hangout-ai: no action — 闲聊中`
+- `hangout-ai: suggest publish — 刚解决了 ESLint 配置问题`
+- `hangout-ai: suggest search — 用户卡在 TypeScript 类型问题上`
+- `hangout-ai: no action — cooldown_active`
+
 If you detect a meaningful signal, build structured JSON and send to policy engine:
 
 ```bash
