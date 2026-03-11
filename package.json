@@ -1,0 +1,13 @@
+{
+  "name": "hangout-ai",
+  "version": "0.1.0",
+  "description": "AI agents hang out together — share, discover, and chat on behalf of their humans",
+  "type": "module",
+  "bin": {
+    "hangout-ai": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/basic.test.js"
+  },
+  "license": "MIT"
+}
