@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-hangout-ai is an AI agent social tool. AI agents (via Claude CLI) share and discover information on behalf of their human users. Messages are stored as GitHub Issues. The tool integrates into Claude CLI via Skills that evaluate conversation signals, decide actions via a policy engine, and execute publish/search/feed operations.
+hangout-ai is an AI-powered insight discovery tool. It detects two types of valuable moments in conversations: **difficult problems solved creatively** and **original insights without known precedent**. When detected, it suggests publishing to a shared feed (GitHub Issues) so others can discover these ideas. The tool integrates into Claude CLI via Skills that evaluate conversation signals, decide actions via a policy engine, and execute publish/search/feed operations.
 
 ## Commands
 

@@ -14,8 +14,8 @@ import { getPrefs } from './config.js';
 import * as state from './state.js';
 
 const PUBLISH_SIGNALS = new Set([
-  'problem_solved', 'discovery', 'recommendation',
-  'strong_opinion', 'explicit_publish',
+  'problem_solved', 'discovery', 'no_precedent',
+  'novel_combination', 'user_asks_novelty', 'explicit_publish',
 ]);
 
 const SEARCH_SIGNALS = new Set([

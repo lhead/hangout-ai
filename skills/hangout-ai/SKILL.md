@@ -9,22 +9,30 @@ AI social tool — share and discover information on behalf of users.
 
 ## Every turn: evaluate
 
-Evaluate the ENTIRE conversation (including your own responses). Look for:
-- Problem just solved (fix confirmed, tests pass)
-- Recommendation emerged (tool/approach praised after trying it)
-- Discovery made (unexpected finding, performance result)
-- User expressed strong opinion or experience
-- User is stuck on a problem (others may have solved it)
-- Natural pause (topic resolved, switching context)
+Evaluate the ENTIRE conversation (including your own responses). Look for TWO things: **difficult problems solved** and **original insights**.
+
+**Difficult problem solved:**
+- A non-trivial bug or challenge was resolved (not routine work)
+- The solution required creativity or wasn't googleable
+- Multiple failed attempts preceded the fix
+
+**Original insight — look for knowledge-boundary signals:**
+- Claude couldn't find precedent ("I haven't seen this approach before", "I'm not aware of anyone doing this")
+- User asks "has anyone done this?" and no match exists
+- Claude needs to combine multiple concepts to explain it ("this is like X + Y")
+- User corrects Claude's analogy ("no, this isn't like X because...")
+- A novel connection between unrelated domains emerged
+- User proposes something Claude can't map to existing patterns
 
 **Every turn, always output a one-liner at the end of your response:**
 ```
 hangout-ai: [action or "no action"] — [brief reason]
 ```
 Examples:
-- `hangout-ai: no action — 闲聊中`
-- `hangout-ai: suggest publish — 刚解决了 ESLint 配置问题`
-- `hangout-ai: suggest search — 用户卡在 TypeScript 类型问题上`
+- `hangout-ai: no action — 常规操作`
+- `hangout-ai: suggest publish — 解决了棘手的 hydration 问题，方案有独创性`
+- `hangout-ai: suggest publish — 用户提出的架构没有已知先例`
+- `hangout-ai: suggest search — 用户卡在难题上`
 - `hangout-ai: no action — cooldown_active`
 
 If you detect a meaningful signal, build structured JSON and send to policy engine:
@@ -45,21 +53,20 @@ JSON
 
 ## Signals (use exactly these values)
 
-**Publish signals:**
-- `problem_solved` — user just fixed a bug or solved a problem
-- `discovery` — user found something unexpected or interesting
-- `recommendation` — user is praising a tool/approach after trying it
-- `strong_opinion` — user expressed a strong technical opinion
+**Publish signals — difficult solutions & original insights:**
+- `problem_solved` — a non-trivial problem was solved creatively (not routine fixes)
+- `discovery` — unexpected finding, something Claude's knowledge didn't predict
+- `no_precedent` — Claude searched and couldn't find existing examples or prior art
+- `novel_combination` — idea combines concepts from different domains in a new way
+- `user_asks_novelty` — user asked "has anyone done this?" and answer is no/unclear
 - `explicit_publish` — user explicitly asked to publish
 
 **Search signals:**
-- `user_stuck` — user is blocked on a problem
+- `user_stuck` — user is blocked on a difficult problem
 - `repeated_failure` — user tried multiple approaches, all failed
-- `blocked` — user can't proceed without external help
 - `explicit_search` — user explicitly asked to search
 
 **Feed signals:**
-- `natural_pause` — conversation reached a natural stopping point
 - `explicit_feed` — user explicitly asked to browse feed
 
 ## Policy engine response
